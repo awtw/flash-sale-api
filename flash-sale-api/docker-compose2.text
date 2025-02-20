@@ -41,8 +41,8 @@ services:
     container_name: rabbitmq
     restart: always
     ports:
-      - "5672:5672"  # RabbitMQ 服務端口
-      - "15672:15672"  # RabbitMQ 管理界面
+      - "5672:5672"
+      - "15672:15672"
     environment:
       RABBITMQ_DEFAULT_USER: $RABBITMQ_USER
       RABBITMQ_DEFAULT_PASS: $RABBITMQ_PASSWORD
@@ -53,6 +53,26 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  app:
+    image: node:16
+    container_name: flash-sale-api
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    command: ["sh", "-c", "npm install && npm run start"]
 
 volumes:
   postgres_data:
