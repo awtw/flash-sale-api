@@ -14,7 +14,7 @@
 - **資料庫**：PostgreSQL（使用 TypeORM）
 - **快取系統**：Redis（提升讀取效能）
 - **訊息佇列**：RabbitMQ（透過 `amqplib` 進行異步處理）
-- **測試**：Jest + Supertest
+- **測試**：Jest
 
 ---
 
@@ -54,7 +54,7 @@ npm install
    * **框架**：NestJS（模組化結構）
    * **資料庫**：PostgreSQL（使用 TypeORM）
    * **訊息佇列**：RabbitMQ（透過 `amqplib` 進行異步處理）
-   * **測試**：Jest + Supertest
+   * **測試**：Jest
 2. **核心功能**
    * `POST /purchase`：購買商品，確保高併發下不會超賣
    * `GET /products/:id`：查詢商品庫存
@@ -106,7 +106,8 @@ docker ps
 
 ```
 
-## 專案結構  
+## 專案結構
+
 ```sh
 /src
   /controllers
