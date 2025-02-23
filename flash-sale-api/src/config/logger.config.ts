@@ -2,18 +2,18 @@ import { Logger } from '@nestjs/common';
 
 export class LoggerService extends Logger {
   log(message: string, context?: string) {
-    super.log(`[INFO] ${message}`, context || 'Application');
+    console.log(`[INFO] ${message}`);
   }
 
   warn(message: string, context?: string) {
-    super.warn(`[WARNING] ${message}`, context || 'Application');
+    console.warn(`[WARNING] ${message}`);
   }
 
   error(message: string, trace?: string, context?: string) {
-    super.error(`[ERROR] ${message}`, trace, context || 'Application');
+    console.error(`[ERROR] ${message}`, trace);
   }
 
   debug(message: string, context?: string) {
-    super.debug(`[DEBUG] ${message}`, context || 'Application');
+    console.debug(`[DEBUG] ${message}`);
   }
 }

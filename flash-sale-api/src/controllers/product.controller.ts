@@ -17,7 +17,7 @@ export class ProductController {
 
   @Post('/purchase')
   async purchase(@Body('productId') productId: number) {
-    await this.queueService.addToQueue(productId);
+    await this.queueService.sendToQueue({ productId });
     return { message: '訂單已送出，請稍候處理' };
   }
 }
